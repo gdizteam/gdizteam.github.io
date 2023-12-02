@@ -1,0 +1,75 @@
+<style>
+    #popup-container {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 3px;
+        z-index: 9999;
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        #popup-container {
+            width: 90%;
+            max-width: 728px;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+            margin: 0 auto;
+        }
+    }
+
+    #close-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        font-size: 24px;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        z-index: 1;
+		text-shadow: 1px 1px 2px #000;
+    }
+</style>
+
+<div id="popup-container">
+    <div id="ad-content">
+        <div id="close-button" onclick="closePopup()">&#10006;</div>
+        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+        <ins class="eas6a97888e2" data-zoneid="5145372"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+    </div>
+</div>
+
+<script>
+    const popupContainer = document.getElementById('popup-container');
+
+    function showPopup() {
+        const lastClosedTimestamp = localStorage.getItem('popupClosedTimestamp');
+        if (!lastClosedTimestamp) {
+            popupContainer.style.display = 'block';
+        } else {
+            const currentTime = new Date().getTime();
+            const oneDayInMilliseconds = 1 * 60 * 60 * 1000;
+            const timeDifference = currentTime - parseInt(lastClosedTimestamp);
+
+            if (timeDifference >= oneDayInMilliseconds) {
+                popupContainer.style.display = 'block';
+            }
+        }
+    }
+
+    function closePopup() {
+        popupContainer.style.display = 'none';
+        const currentTime = new Date().getTime();
+        localStorage.setItem('popupClosedTimestamp', currentTime.toString());
+    }
+
+    showPopup();
+</script>
