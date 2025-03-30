@@ -122,6 +122,10 @@
             margin: 20px auto;
             overflow: hidden;
             background-color: #343a40;
+            position: relative; /* Added position relative */
+            display: flex;     /* Added to center content */
+            justify-content: center;
+            align-items: center;
         }
         
         .advertisement-box {
@@ -179,6 +183,13 @@
             .advertisement-banner {
                 height: auto;
                 min-height: 90px;
+                padding: 10px 0;
+            }
+            
+            .advertisement-banner iframe {
+                max-width: 100%;
+                transform: scale(0.8); /* Scale down the ad slightly */
+                transform-origin: center center;
             }
         }
         
@@ -201,6 +212,15 @@
                 height: 40px;
                 font-size: 1.2em;
             }
+            
+            .advertisement-banner {
+                height: auto;
+                min-height: 90px;
+            }
+            
+            .advertisement-banner iframe {
+                transform: scale(0.7); /* Scale down even more on very small screens */
+            }
         }
     </style>
 </head>
@@ -216,16 +236,18 @@
         
         <p class="advertisement-label">Advertisement</p>
         <div class="advertisement-banner">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : 'ebb4c1e1a2109508a8a49f805a1749c5',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/ebb4c1e1a2109508a8a49f805a1749c5/invoke.js"></script>
+            <div class="ad-wrapper">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'ebb4c1e1a2109508a8a49f805a1749c5',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/ebb4c1e1a2109508a8a49f805a1749c5/invoke.js"></script>
+            </div>
         </div>
         
         <p>At <a href="http://www.gdiz.eu.org" target="_blank">GDIZBlog</a>, we scour the internet to bring you the finest articles, thought-provoking stories, practical tips, and intriguing insights. Our mission is simple: to curate the most engaging and valuable content so that you can explore, learn, and enjoy—all in one convenient location.</p>
